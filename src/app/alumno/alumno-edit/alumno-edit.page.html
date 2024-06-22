@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Alumno</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="volver()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Código</ion-label>
+          <ion-input [(ngModel)]="alumno.codigo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nombre</ion-label>
+          <ion-input [(ngModel)]="alumno.nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Apellido</ion-label>
+          <ion-input [(ngModel)]="alumno.apellido"></ion-input>
+        </ion-item>
+
+        <!-- Solo mostrar el avatar y los botones si el avatar no está vacío -->
+        <ion-item lines="none" *ngIf="avatar">
+          <ion-thumbnail slot="start">
+            <img [src]="avatar" alt="Avatar del alumno">
+          </ion-thumbnail>
+          <ion-button fill="outline" color="primary" (click)="upload.click()" slot="end">
+            <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+            Cargar
+          </ion-button>
+          <ion-button fill="outline" color="danger" (click)="eliminarAvatar()" slot="end">
+            <ion-icon slot="start" name="trash-outline"></ion-icon>
+            Eliminar
+          </ion-button>
+          <input type="file" #upload accept=".png, .jpg" hidden (change)="uploadFile(upload)">
+        </ion-item>
+
+        <!-- Si no hay avatar, no mostrar nada -->
+        <ion-item lines="none" *ngIf="!avatar">
+          <ion-label position="stacked">Avatar</ion-label>
+          <ion-button fill="outline" color="primary" (click)="upload.click()" slot="end">
+            <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+            Cargar
+          </ion-button>
+          <input type="file" #upload accept=".png, .jpg" hidden (change)="uploadFile(upload)">
+        </ion-item>
+        
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="accion(alumno.id)">
+      <ion-icon name="save"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

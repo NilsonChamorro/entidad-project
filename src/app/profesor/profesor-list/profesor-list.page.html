@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profesor</ion-title>
+
+   
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar (ionChange)="filterItems($event)" animated="true" placeholder="Buscar"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row class="header-color">
+  
+      <ion-col><strong>Codigo</strong></ion-col>
+      <ion-col><strong>Nombre</strong></ion-col>
+      <ion-col><strong>Apellido</strong></ion-col>
+      <ion-col><strong>Nacimiento</strong></ion-col>
+      <ion-col><strong>Activo</strong></ion-col>
+   
+ 
+    </ion-row>
+    
+    <ion-row *ngFor="let profesor of listaProfesoresFiltrados">
+      <ion-item-sliding>
+
+
+        <ion-item [routerLink]="['/profesor-edit/'+profesor.id]">
+          <ion-col>{{ profesor.codigo }}</ion-col>
+          <ion-col>{{ profesor.nombre }}</ion-col>
+          <ion-col>{{ profesor.apellido }}</ion-col>
+          <ion-col>{{ formatearFecha(profesor.nacimiento) }}</ion-col>
+          <ion-col>
+            <ion-checkbox [checked]="profesor.activo"  [disabled]="true"></ion-checkbox>
+          </ion-col>
+         
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="success" [routerLink]="['/profesor-edit/'+profesor.id]">
+            <ion-icon slot="start" name="create"></ion-icon>
+            Editar
+          </ion-item-option>
+
+          <ion-item-option color="danger" (click)="eliminarProfesor(profesor.id)">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            Eliminar
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+     
+     
+      
+      
+
+    </ion-row>
+  </ion-grid>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="nuevo()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+ 
+  </ion-fab>
+</ion-content>

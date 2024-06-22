@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profesor</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="volver()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+        <ion-item>
+          <ion-label>Código</ion-label>
+          <ion-input type="number" [(ngModel)]="profesor.codigo">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nombre</ion-label>
+          <ion-input [(ngModel)]="profesor.nombre">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Apellido</ion-label>
+          <ion-input [(ngModel)]="profesor.apellido">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nacimiento</ion-label>
+          
+          <ion-datetime presentation="date" [(ngModel)]="profesor.nacimiento" name="fecha"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Activo</ion-label>
+          <ion-checkbox slot="end" [(ngModel)]="profesor.activo"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="accion(profesor.id)">
+      <ion-icon name="save"></ion-icon>
+    </ion-fab-button>
+ 
+  </ion-fab>
+
+
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "appreclamos-1461c": {
+      "hosting": {
+        "app": [
+          "appreclamos-1461c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "appreclamos-1461c"
+  }
+}
